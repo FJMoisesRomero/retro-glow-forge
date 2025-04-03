@@ -8,7 +8,7 @@ const FeaturesSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-950/20 to-background -z-10" />
       
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 glow-text">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 neon-text">
           Enfócate en crear proyectos más impactantes
         </h2>
         
@@ -51,8 +51,8 @@ const FeatureCircle: React.FC<{ icon: React.ReactNode; classes?: string }> = ({ 
 
 const FeatureCard: React.FC<{ title: string; description: string }> = ({ title, description }) => {
   return (
-    <div className="glass-card p-6 rounded-xl hover-scale">
-      <h3 className="text-xl font-semibold mb-3">{title}</h3>
+    <div className="glass-card p-6 rounded-xl hover-scale neon-shadow-hover">
+      <h3 className="text-xl font-semibold mb-3 neon-text-subtle">{title}</h3>
       <p className="text-gray-400">{description}</p>
     </div>
   );

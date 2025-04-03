@@ -25,6 +25,9 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.75rem;
+    --neon-blue: 213 100% 65%;
+    --neon-purple: 265 100% 66%;
+    --neon-pink: 330 100% 65%;
   }
 }
 
@@ -46,6 +49,79 @@
 @layer utilities {
   .glow-text {
     text-shadow: 0 0 10px rgba(191, 219, 254, 0.3), 0 0 20px rgba(191, 219, 254, 0.2);
+  }
+  
+  .neon-text {
+    text-shadow: 
+      0 0 5px rgba(191, 219, 254, 0.5),
+      0 0 10px rgba(147, 197, 253, 0.5),
+      0 0 15px rgba(59, 130, 246, 0.5),
+      0 0 20px rgba(37, 99, 235, 0.5);
+    @apply animate-pulse-slow text-blue-200;
+  }
+  
+  .neon-text-subtle {
+    text-shadow: 
+      0 0 5px rgba(191, 219, 254, 0.4),
+      0 0 10px rgba(147, 197, 253, 0.3);
+    @apply text-blue-100;
+  }
+  
+  .neon-text-pink {
+    text-shadow: 
+      0 0 5px rgba(249, 168, 212, 0.5),
+      0 0 10px rgba(236, 72, 153, 0.5),
+      0 0 15px rgba(219, 39, 119, 0.5);
+    @apply animate-pulse-slow text-pink-200;
+  }
+  
+  .neon-text-purple {
+    text-shadow: 
+      0 0 5px rgba(216, 180, 254, 0.5),
+      0 0 10px rgba(192, 132, 252, 0.5),
+      0 0 15px rgba(168, 85, 247, 0.5);
+    @apply animate-pulse-slow text-purple-200;
+  }
+  
+  .neon-link {
+    @apply relative py-1 inline-flex transition-all duration-300;
+  }
+  
+  .neon-link::after {
+    content: '';
+    @apply absolute left-0 right-0 bottom-0 h-[2px] bg-blue-400 scale-x-0 origin-bottom-right transition-transform duration-300 ease-in-out opacity-0;
+    box-shadow: 
+      0 0 5px rgba(59, 130, 246, 0.5),
+      0 0 10px rgba(37, 99, 235, 0.5);
+  }
+  
+  .neon-link:hover::after {
+    @apply scale-x-100 origin-bottom-left opacity-100;
+  }
+  
+  .neon-link:hover {
+    @apply text-blue-200;
+    text-shadow: 
+      0 0 5px rgba(191, 219, 254, 0.5),
+      0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  
+  .neon-shadow {
+    box-shadow: 
+      0 0 5px rgba(59, 130, 246, 0.3),
+      0 0 15px rgba(37, 99, 235, 0.2);
+  }
+  
+  .neon-shadow-hover {
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .neon-shadow-hover:hover {
+    box-shadow: 
+      0 0 5px rgba(59, 130, 246, 0.4),
+      0 0 15px rgba(37, 99, 235, 0.3),
+      0 0 25px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
   }
   
   .glow-effect {
@@ -82,4 +158,99 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% { 
+    opacity: 0.8;
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(0) translateX(0) rotate(0); }
+  33% { transform: translateY(-10px) translateX(10px) rotate(120deg); }
+  66% { transform: translateY(5px) translateX(-15px) rotate(240deg); }
+  100% { transform: translateY(0) translateX(0) rotate(360deg); }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% { 
+    opacity: 0.9;
+    filter: brightness(1.2);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-particle-float {
+    animation: particle-float 20s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: neon-pulse 3s ease-in-out infinite;
+  }
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }

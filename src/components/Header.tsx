@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             <Button variant="link" className="text-gray-400 hover:text-white">
               Sign in
             </Button>
-            <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white">
+            <Button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white neon-shadow-hover">
               Sign up for free
             </Button>
           </div>
@@ -43,13 +43,13 @@ const Header: React.FC = () => {
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 py-4 glass-card rounded-lg animate-fade-in">
           <nav className="flex flex-col space-y-4 px-6">
-            <a href="#features" className="text-gray-300 hover:text-white py-2">Features</a>
-            <a href="#pricing" className="text-gray-300 hover:text-white py-2">Pricing</a>
-            <a href="#testimonials" className="text-gray-300 hover:text-white py-2">Testimonials</a>
-            <a href="#resources" className="text-gray-300 hover:text-white py-2">Resources</a>
+            <a href="#features" className="text-gray-300 hover:text-white py-2 neon-link">Features</a>
+            <a href="#pricing" className="text-gray-300 hover:text-white py-2 neon-link">Pricing</a>
+            <a href="#testimonials" className="text-gray-300 hover:text-white py-2 neon-link">Testimonials</a>
+            <a href="#resources" className="text-gray-300 hover:text-white py-2 neon-link">Resources</a>
             <div className="pt-4 flex flex-col space-y-3">
               <Button variant="outline" className="border-gray-700">Sign in</Button>
-              <Button className="bg-gradient-to-r from-blue-500 to-purple-500">Sign up for free</Button>
+              <Button className="bg-gradient-to-r from-blue-500 to-purple-500 neon-shadow-hover">Sign up for free</Button>
             </div>
           </nav>
         </div>
@@ -61,10 +61,10 @@ const Header: React.FC = () => {
 const NavItems: React.FC = () => {
   return (
     <nav className="flex items-center space-x-6">
-      <a href="#features" className="text-gray-300 hover:text-white hover:glow-text transition-all">Features</a>
-      <a href="#pricing" className="text-gray-300 hover:text-white hover:glow-text transition-all">Pricing</a>
-      <a href="#testimonials" className="text-gray-300 hover:text-white hover:glow-text transition-all">Testimonials</a>
-      <a href="#resources" className="text-gray-300 hover:text-white hover:glow-text transition-all">Resources</a>
+      <a href="#features" className="text-gray-300 hover:text-white neon-link">Features</a>
+      <a href="#pricing" className="text-gray-300 hover:text-white neon-link">Pricing</a>
+      <a href="#testimonials" className="text-gray-300 hover:text-white neon-link">Testimonials</a>
+      <a href="#resources" className="text-gray-300 hover:text-white neon-link">Resources</a>
     </nav>
   );
 };

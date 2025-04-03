@@ -33,19 +33,25 @@ const Particles: React.FC<ParticlesProps> = ({ className }) => {
       speedX: number;
       speedY: number;
       color: string;
+      glowRadius: number;
+      pulseDirection: number;
+      originalSize: number;
       
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
+        this.originalSize = Math.random() * 4 + 1;
+        this.size = this.originalSize;
+        this.glowRadius = this.size * 5;
+        this.speedX = Math.random() * 0.8 - 0.4;
+        this.speedY = Math.random() * 0.8 - 0.4;
+        this.pulseDirection = 1;
         
-        // Create a gradient from purple to blue
+        // Create a gradient from purple to blue to pink
         const colors = [
-          'rgba(139, 92, 246, 0.7)', // Purple
-          'rgba(59, 130, 246, 0.7)', // Blue
-          'rgba(236, 72, 153, 0.7)'  // Pink
+          'rgba(139, 92, 246, 0.9)', // Purple
+          'rgba(59, 130, 246, 0.9)', // Blue
+          'rgba(236, 72, 153, 0.9)'  // Pink
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
@@ -54,32 +60,57 @@ const Particles: React.FC<ParticlesProps> = ({ className }) => {
         this.x += this.speedX;
         this.y += this.speedY;
         
-        // Bounce off edges
-        if (this.x > canvas.width || this.x < 0) {
+        // Pulse size effect
+        this.size += 0.03 * this.pulseDirection;
+        if (this.size > this.originalSize * 1.3 || this.size < this.originalSize * 0.7) {
+          this.pulseDirection *= -1;
+        }
+        
+        this.glowRadius = this.size * 5;
+        
+        // Bounce off edges with some padding
+        const padding = 20;
+        if (this.x > canvas.width - padding || this.x < padding) {
           this.speedX = -this.speedX;
         }
         
-        if (this.y > canvas.height || this.y < 0) {
+        if (this.y > canvas.height - padding || this.y < padding) {
           this.speedY = -this.speedY;
         }
       }
       
       draw() {
         if (!ctx) return;
+        
+        // Draw glow
+        const gradient = ctx.createRadialGradient(
+          this.x, this.y, 0,
+          this.x, this.y, this.glowRadius
+        );
+        
+        const colorWithoutAlpha = this.color.replace(/[^,]+(?=\))/, '0.7');
+        const colorMostTransparent = this.color.replace(/[^,]+(?=\))/, '0');
+        
+        gradient.addColorStop(0, this.color);
+        gradient.addColorStop(0.4, colorWithoutAlpha);
+        gradient.addColorStop(1, colorMostTransparent);
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.glowRadius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Draw core
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        
-        // Add glow effect
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = this.color;
       }
     }
     
-    // Create particles
+    // Create particles - more for a richer effect
     const particles: Particle[] = [];
-    const particleCount = Math.min(50, Math.floor(window.innerWidth * window.innerHeight / 20000));
+    const particleCount = Math.min(70, Math.floor(window.innerWidth * window.innerHeight / 15000));
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
@@ -87,6 +118,7 @@ const Particles: React.FC<ParticlesProps> = ({ className }) => {
     
     // Animation loop
     const animate = () => {
+      // Use a lower alpha for the clear to create trails
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       for (const particle of particles) {
@@ -108,7 +140,7 @@ const Particles: React.FC<ParticlesProps> = ({ className }) => {
   return (
     <canvas 
       ref={canvasRef} 
-      className={`fixed top-0 left-0 w-full h-full -z-10 opacity-30 ${className || ''}`}
+      className={`fixed top-0 left-0 w-full h-full -z-10 opacity-40 ${className || ''}`}
     />
   );
 };
