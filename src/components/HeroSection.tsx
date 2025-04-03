@@ -17,8 +17,10 @@ const HeroSection: React.FC = () => {
           <span className="text-gray-300">Revolucionando letreros retroiluminados</span>
         </div>
         
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 max-w-3xl glow-text">
-          Donde el mundo crea <span className="gradient-text">modelos 3D</span>
+        <h1 className="text-4xl md:text-7xl font-bold mb-6 max-w-3xl">
+          <span className="block mb-1">Donde el</span>
+          <span className="block mb-1">mundo crea</span>
+          <span className="multicolor-neon-text relative">modelos 3D</span>
         </h1>
         
         <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl">

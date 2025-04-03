@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -158,6 +157,41 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+  
+  .multicolor-neon-text {
+    font-size: 1.1em;
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(59, 130, 246, 0.8),
+      0 0 15px rgba(59, 130, 246, 0.6),
+      0 0 20px rgba(59, 130, 246, 0.6),
+      0 0 25px rgba(59, 130, 246, 0.6),
+      0 0 30px rgba(59, 130, 246, 0.6);
+    color: #f0f4ff;
+    position: relative;
+    display: inline-block;
+    animation: neon-flicker 2s infinite alternate-reverse, neon-color-shift 4s infinite alternate;
+    letter-spacing: 2px;
+  }
+  
+  .multicolor-neon-text::before {
+    content: "modelos 3D";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffcafd;
+    text-shadow: 
+      0 0 5px rgba(255, 255, 255, 0.8),
+      0 0 10px rgba(236, 72, 153, 0.8),
+      0 0 15px rgba(236, 72, 153, 0.6),
+      0 0 20px rgba(236, 72, 153, 0.6),
+      0 0 25px rgba(236, 72, 153, 0.6),
+      0 0 30px rgba(236, 72, 153, 0.6);
+    animation: neon-flicker 3s infinite alternate, neon-pink-reveal 4s infinite alternate;
+    mix-blend-mode: screen;
+  }
 }
 
 @keyframes float {
@@ -191,6 +225,35 @@
   50% { 
     opacity: 0.9;
     filter: brightness(1.2);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+    opacity: 0.99;
+  }
+  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes neon-color-shift {
+  0%, 100% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(30deg);
+  }
+}
+
+@keyframes neon-pink-reveal {
+  0%, 40% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  60%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
   }
 }
 
