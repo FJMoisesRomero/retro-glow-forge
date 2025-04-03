@@ -18,9 +18,9 @@ const HeroSection: React.FC = () => {
         </div>
         
         <h1 className="text-4xl md:text-7xl font-bold mb-6 max-w-3xl">
-          <span className="hero-neon-text hero-neon-teal block mb-1">Donde el</span>
-          <span className="hero-neon-text hero-neon-blue block mb-1">mundo crea</span>
-          <span className="hero-neon-text hero-neon-pink relative">modelos 3D</span>
+          <span className="neon-glow neon-teal block mb-1">Donde el</span>
+          <span className="neon-glow neon-blue block mb-1">mundo crea</span>
+          <span className="neon-glow neon-pink relative">modelos 3D</span>
         </h1>
         
         <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl">

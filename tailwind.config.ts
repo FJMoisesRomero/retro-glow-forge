@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -112,6 +111,16 @@ export default {
 						opacity: '0.9',
 						filter: 'brightness(1.2)'
 					}
+				},
+				'glow-breathe': {
+					'0%, 100%': { 
+						filter: 'brightness(1) blur(0px)',
+						opacity: '1'
+					},
+					'50%': { 
+						filter: 'brightness(1.3) blur(0.3px)',
+						opacity: '1.1'
+					}
 				}
 			},
 			animation: {
@@ -120,7 +129,9 @@ export default {
 				'float': 'float 6s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 				'particle-float': 'particle-float 20s ease-in-out infinite',
-				'neon-pulse': 'neon-pulse 3s ease-in-out infinite'
+				'neon-pulse': 'neon-pulse 3s ease-in-out infinite',
+				'glow-pulse': 'glow-breathe 5s ease-in-out infinite',
+				'glow-pulse-slow': 'glow-breathe 8s ease-in-out infinite'
 			}
 		}
 	},

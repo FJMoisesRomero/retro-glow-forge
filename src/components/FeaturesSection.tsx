@@ -8,7 +8,7 @@ const FeaturesSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-950/20 to-background -z-10" />
       
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 hero-neon-text hero-neon-blue">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 animate-glow-pulse">
           Enfócate en crear proyectos más impactantes
         </h2>
         
@@ -42,7 +42,7 @@ const FeaturesSection: React.FC = () => {
 const FeatureCircle: React.FC<{ icon: React.ReactNode; classes?: string }> = ({ icon, classes = "" }) => {
   return (
     <div className={`relative w-32 h-32 rounded-full flex items-center justify-center ${classes}`}>
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-30 animate-pulse-glow" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-30 animate-glow-pulse-slow" />
       <div className="absolute inset-1 rounded-full bg-gray-900 border border-white/5" />
       <div className="relative z-10 text-blue-400 animate-float">
         <div className="feature-icon-glow">{icon}</div>
