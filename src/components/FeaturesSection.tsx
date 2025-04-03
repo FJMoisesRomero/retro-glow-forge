@@ -8,7 +8,7 @@ const FeaturesSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-blue-950/20 to-background -z-10" />
       
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 multicolor-neon-text">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-20 hero-neon-text hero-neon-blue">
           Enfócate en crear proyectos más impactantes
         </h2>
         
