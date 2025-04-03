@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Cube } from 'lucide-react';
+import { Box } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           {/* Logo and info */}
           <div className="mb-8 md:mb-0">
             <div className="flex items-center space-x-2 mb-4">
-              <Cube className="h-7 w-7 text-blue-400" />
+              <Box className="h-7 w-7 text-blue-400" />
               <span className="text-xl font-bold gradient-text">RetroGlowForge</span>
             </div>
             <p className="text-sm text-gray-500 max-w-xs">

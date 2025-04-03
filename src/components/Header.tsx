@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Cube, Menu, X } from 'lucide-react';
+import { Box, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const Header: React.FC = () => {
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
     <header className="py-4 px-6 md:px-12 relative z-50">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <Cube className="h-7 w-7 text-blue-400 animate-pulse-glow" />
+          <Box className="h-7 w-7 text-blue-400 animate-pulse-glow" />
           <span className="text-xl font-bold gradient-text">RetroGlowForge</span>
         </div>
         

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Cube, Layers, ImagePlus } from 'lucide-react';
+import { Box, Layers, ImagePlus } from 'lucide-react';
 
 const FeaturesSection: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const FeaturesSection: React.FC = () => {
         
         {/* Feature circles */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-24">
-          <FeatureCircle icon={<Cube size={30} />} />
+          <FeatureCircle icon={<Box size={30} />} />
           <FeatureCircle icon={<Layers size={30} />} classes="scale-110" />
           <FeatureCircle icon={<ImagePlus size={30} />} />
         </div>
